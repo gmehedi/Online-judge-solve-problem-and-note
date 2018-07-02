@@ -1,0 +1,4 @@
+//  https://mukitmkbs.wordpress.com/2016/08/26/uva-106-fermat-vs-pythagoras/
+a=2*r*s
+b=r^2-s^2
+c=r^2+s^2

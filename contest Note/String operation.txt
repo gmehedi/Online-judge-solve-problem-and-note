@@ -1,0 +1,2 @@
+Remove a character from string in c++ : like as stringName.erase(stringName.begin()+0//(position) );
+getc()---->input string with while space;

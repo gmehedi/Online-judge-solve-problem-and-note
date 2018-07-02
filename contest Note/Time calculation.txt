@@ -1,0 +1,92 @@
+Add or Subtract the hours and minutes separately. 
+But you may need to do some adjusting if the minutes end up 60 or more, or less than zero!
+
+Adding Times
+Follow these steps:
+
+Add the hours
+Add the minutes
+If the minutes are 60 or more, subtract 60 from the minutes and add 1 to hours
+Like this:
+
+Easy example: What is 2:45 + 1:10 ?
+Add the Hours: 2+1 = 3
+Add the Minutes: 45+10 = 55
+The minutes are OK, so the answer is 3:55
+
+Hard example: What is 2:45 + 1:20 ?
+Add the Hours: 2+1 = 3
+Add the Minutes: 45+20 = 65
+The minutes are 60 or more, so
+
+subtract 60 from minutes (65-60 = 5 Minutes)
+and add 1 to Hours (3+1 = 4 Hours)
+The answer is 4:05
+
+Subtracting Times
+Follow these steps:
+
+Subtract the hours
+Subtract the minutes
+If the minutes are negative, add 60 to the minutes and subtract 1 from hours.
+Like this:
+
+Easy example: What is 4:10 - 1:05 ?
+Subtract the Hours: 4-1 = 3
+Subtract the Minutes: 10-5 = 5
+The minutes are OK, so the answer is 3:05
+
+Hard example: What is 4:10 - 1:35 ?
+Subtract the Hours: 4-1 = 3
+Subtract the Minutes: 10-35 = -25
+The minutes are less than 0, so:
+
+add 60 to Minutes (-25+60 = 60-25 = 35 Minutes)
+and subtract 1 from Hours (3-1 = 2 Hours)
+The answer is 2:35
+
+(Note: did you see how we changed "-25+60" to "60-25" ... that is perfectly fine and makes the calculation easier.)
+
+Adjusting The Hours
+The hours can also end up too large or small!
+
+To fix that first we must know if it is 24-Hour Clock or AM/PM:
+
+day am pm
+
+24-Hour Clock
+When Hours end up less than zero: add 24
+When hours end up more than 23: subtract 24
+Example: What is 16:20 + 9:35 ?
+Add the Hours: 16+9 = 25
+Add the Minutes: 20+35 = 55
+The minutes are OK
+
+The hours are more than 23, so subtract 24: 25-24 = 1
+
+The answer is 1:55 of the next day.
+
+Example: What is 4:10 - 6:15 ?
+Subtract the Hours: 4-6 = -2
+Subtract the Minutes: 10-15 = -5
+The minutes are less than 0, so:
+
+add 60 to Minutes: -5+60 = 60-5 = 55 Minutes
+and subtract 1 from Hours: -2-1 = -3 Hours
+The hours are less than 0, so add 24: -3+24 = 24-3 = 21
+
+The answer is 21:55 of the previous day.
+
+12-Hour Clock (AM/PM)
+For 12-Hour Clock it is best to convert to 24-Hour Clock, do the calculations then convert back.
+
+Example: What is 3:20 PM - 16:05 ?
+3:20 PM is 15:20
+
+Subtract the Hours: 15-16 = -1
+Subtract the Minutes: 20-5 = 15
+The minutes are OK
+
+The hours are less than 1, so add 24: -1+24 = 24-1 = 23
+
+The answer is 23:15, which is 11:15 PM of the previous day.

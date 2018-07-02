@@ -1,0 +1,71 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+map<long long,int>flag;
+
+
+int main()
+{
+    int n,t;
+    scanf("%d",&t);
+
+    while(t--)
+    {
+         scanf("%d",&n);
+         long long a[n+1];
+
+         for(int i=0; i<n; i++)
+         {
+             scanf("%lld",&a[i]);
+         }
+
+         int low=0,high=0,cnt=0,maxi=0;
+         for(int i=0; i<n; i++)
+         {
+             flag[ a[i] ]++;
+
+             if(flag[ a[i] ]>1)
+             {
+                 //cout<<"A      "<<a[i]<<endl;
+                 maxi=max(maxi,cnt);
+                 while(1)
+                 {
+                     flag[ a[low] ]--;
+                     int curr_value=flag[ a[low] ];
+                     if(curr_value==1)
+                     {
+                         low++;
+                         break;
+                     }
+                  //  cout<<"C   "<<curr_value<<"      CNT          "<<cnt<< " L       "<<a[low]<<endl;
+                    low++;
+                    cnt--;
+
+
+                 }
+             }
+             else
+             {
+                 cnt++;
+                 high++;
+             }
+         }
+        maxi=max(maxi,cnt);
+        flag.clear();
+
+        cout<<maxi<<endl;
+    }
+
+
+    return 0;
+}
+..........................................................................
+
+long long maxi=0,temp=0,low=0;
+    for(int i=0; i<n; i++)
+    {
+        temp+=a[i];
+        while(low<i && a[i]-a[low] >=m )temp-=a[low].s,low++;
+        maxi=max(maxi,temp);
+    }
+    cout<<maxi<<endl;

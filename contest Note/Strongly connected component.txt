@@ -1,0 +1,95 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<int> adj1[10000];
+vector<int> radj[10000];
+vector<int> adj2[10000];
+bool vis[10000];    // visited array
+int comp[10000];    // component number
+vector<int> topsort;
+
+void dfs1(int u){
+    vis[u] =1;
+
+    for (int i=0;i<adj1[u].size();i++){
+        int v = adj1[u][i];
+
+        if (!vis[v])
+            dfs1(v);
+    }
+
+    topsort.push_back(u);
+}
+
+void dfs2(int u, int cmp){
+    vis[u] = 1;
+    comp[u] = cmp;
+
+    for (int i=0;i<radj[u].size();i++){
+        int v = radj[u][i];
+
+        if (vis[v]==0)
+            dfs2(v, cmp);
+    }
+}
+
+int main(){
+    int n,m;
+
+    scanf ("%d%d",&n,&m);
+
+    for (int i=1;i<=m;i++){
+        int u,v;
+
+        cin >> u >> v;
+
+        adj1[u].push_back(v);
+        radj[v].push_back(u);
+    }
+
+    for(int i=1;i<=n;i++)
+        if (vis[i] == 0)
+            dfs1(i);
+
+    reverse(topsort.begin(), topsort.end());
+   // for(int i=0; i<)
+    memset(vis,0, sizeof(vis));
+
+    int cmp = 0;
+    for (int i=0;i<topsort.size();i++){
+        if (vis[topsort[i]] == 0 ){
+            ++cmp;
+            dfs2(topsort[i],cmp);
+        }
+    }
+    cout << endl;
+
+    for (int i=1;i<=n;i++){
+        cout << i << ": " << comp[i] << endl;
+    }
+
+    for (int i=1;i<=n;i++){
+        for (int j=0;j<adj1[i].size();i++){
+            int u = i;
+            int v = adj1[i][j];
+
+            if (comp[u] != comp[v]){
+                adj2[comp[u]].push_back(comp[v]);
+                cout << comp[u] << " " << comp[v] << endl;
+            }
+        }
+    }
+
+return 0;
+}
+/*
+6 7
+1 2
+2 1
+3 2
+4 3
+5 3
+5 6
+6 5
+*/

@@ -1,0 +1,34 @@
+First, if p and q are not coprime, divide them on gcd(p,q)
+gcd(p,q). Fraction is finite if and only if there is integer k
+k such that q|p·bk
+q|p·bk. Since p
+p and q are being coprime now, 
+q|b k?
+q|b k? all prime factors of q
+q are prime factors of  b
+b. Now we can do iterations 
+q=q÷gcd(b,q)
+q=q÷gcd(b,q) while 
+gcd(q,b)?1
+gcd(q,b)?1. If 
+q?1
+q?1 after iterations, there are prime factors of q
+q which are not prime factors of 
+b?
+b? fraction is Infinite, else fraction is Finite. But this solution works in 
+O(nlog210^18)
+O(nlog^2 10^18). Let's add 
+b=gcd(b,q)
+b=gcd(b,q) in iterations and name iterations when 
+gcd(b,q)
+gcd(b,q) changes iterations of the first type and when it doesn't change — iterations of the second type. Iterations of second type works summary in 
+O(log10^18)
+O(log?10^18). Number of iterations of the first type is 
+O(log10^18)
+O(log?10^18) too but on each iteration b
+b decreases twice. Note that number of iterations in Euclid's algorithm is equal to number of this decreases. So iterations of first type works in 
+O(log10^18)
+O(log?10^18) summary. Total time complexity is 
+O(nlog10^18)
+O(nlog?10^18)
+Solution

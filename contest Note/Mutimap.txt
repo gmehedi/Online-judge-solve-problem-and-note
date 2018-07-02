@@ -1,0 +1,82 @@
+Multimap in C++ Standard Template Library (STL)
+2.1
+Multimap is similar to mapwith an addition that multiple elements can have same keys. Rather than each element being unique, the key value and mapped value pair has to be unique in this case.
+
+Functions associated with multimap:
+
+begin() – Returns an iterator to the first element in the multimap
+end() – Returns an iterator to the theoretical element that follows last element in the multimap
+size() – Returns the number of elements in the multimap
+max_size() – Returns the maximum number of elements that the multimap can hold
+empty() – Returns whether the multimap is empty
+pair<int,int> insert(keyvalue,multimapvalue) – Adds a new element to the multimap
+erase(iterator position) – Removes the element at the position pointed by the iterator
+erase(const g)– Removes the key value ‘g’ from the multimap
+clear() – Removes all the elements from the multimap
+key_comp() / value_comp() – Returns the object that determines how the elements in the multimap are ordered (‘<‘ by default)
+find(const g) – Returns an iterator to the element with key value ‘g’ in the multimap if found, else returns the iterator to end
+count(const g) – Returns the number of matches to element with key value ‘g’ in the multimap
+lower_bound(const g) – Returns an iterator to the first element that is equivalent to multimapped value with key value ‘g’ or
+ definitely will not go before the element with key value ‘g’ in the multimap
+upper_bound(const g) – Returns an iterator to the first element that is equivalent to multimapped value with key value ‘g’ or
+ definitely will go after the element with key value ‘g’ in the multimap...
+
+''''''''MMMAAAPPP THAN MULTIMAP EXAMPLE'''''''''''
+
+// C++ program makes a map to store
+// elements in descending order.
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+    // Here if greater<int> is used to make
+    // sure that elements are stored in
+    // ascending order of keys.
+    map<int, string, greater <int> > mymap;
+ 
+    // Inserting the elements one by one
+    mymap.insert(make_pair(10, "queen"));
+    mymap.insert(make_pair(20, "rose"));
+    mymap.insert(make_pair(5," lion"));
+ 
+    // begin() returns to the first value of map.
+    map<int,string> :: iterator it;
+    for (it=mymap.begin() ; it!=mymap.end() ; it++)
+        cout << "(" << (*it).first << ", "
+             << (*it).second << ")" << endl;
+ 
+    return 0;
+}
+
+''''''''''MULTIMAP'''''''''''''''
+
+// C++ program makes a multimap to store
+// elements in descending order.
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int main()
+{
+    // Here if greater<int> is used to make
+    // sure that elements are stored in
+    // ascending order of keys.
+    multimap<int, string, greater <int> > mymap;
+ 
+    // Inserting the elements one by one
+    mymap.insert(make_pair(10, "queen"));
+    mymap.insert(make_pair(20, "rose"));
+    mymap.insert(make_pair(5," lion"));
+    mymap.insert(make_pair(20, "van")); // Duplicates allowed
+    mymap.insert(make_pair(20, "watch"));
+    mymap.insert(make_pair(5,"joker"));
+ 
+ 
+    // begin() returns to the first value of multimap.
+    multimap<int,string> :: iterator it;
+    for (it=mymap.begin() ; it!=mymap.end() ; it++)
+        cout << "(" << (*it).first << ", "
+             << (*it).second << ")" << endl;
+ 
+    return 0;
+}

@@ -1,0 +1,11 @@
+bitset<maxi>b;
+int prime[maxi];
+int k=0;
+void Prime()
+{
+    b[0]=true;
+    for(int i=2; i*i<=maxi; i++) if(!b[i]) for(int j=i*i; j<=maxi; j=j+i )b[j]=true;
+    k=0;
+    for(int i=2; i<=maxi; i++)if(!b[i] ) prime[k++]=i;
+}
+

@@ -1,0 +1,10 @@
+long long pow(int b)
+{
+    if(b==0)return 1;
+    int t=pow(b/2);
+    t=t*t;
+    if(b%2==1)t=t*2;
+    if(t>m)return 0;
+    else
+    return t;
+}

@@ -1,0 +1,9 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+int fx[]={-1,-1,-1,0,0,0,1,1,1};
+int fy[]={-1,0,1,-1,0,1,-1,0,1};
+int main()
+{
+    return 0;
+}

@@ -1,0 +1,15 @@
+ string s;
+    cin>>s;
+    int sz=(int)s.size();
+    for(int i=0; i<sz; i++)
+    {
+        for(int j=1; j<=sz-i; j++)
+        {
+            string s1=s.substr(i,j);
+            if( (int)s1.size()==1)continue;
+          //  cout<<"S  "<<s1<<endl;
+           // Palindrome(s1);
+        }
+    }
+
+ if(strstr(temp1.c_str(),temp2.c_str())) { Yes } // for check substring or not

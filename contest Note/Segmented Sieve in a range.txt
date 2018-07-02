@@ -1,0 +1,66 @@
+#include<bits/stdc++.h>
+using namespace std;
+# define N 2147483647
+# define sqt 100000
+int s=sqrt(N);
+long long prime[sqt+5],seg[sqt+5];
+bool sign[sqt];
+
+void sieve()
+{
+    prime[0]=2;
+    for(int i=3; i*i<=sqrt(N); i+=2)
+    {
+        if(sign[i])
+        {
+            for(int j=i*i; j<=sqrt(N); j+=i*2 )
+            {
+                sign[j]=false;
+            }
+        }
+    }
+    int k=1;
+    for(int i=3; i<=sqrt(N); i+=2)if(sign[i])prime[k++]=i;
+    prime[k++]=INT_MAX;
+}
+int k=0,mini=INT_MAX;
+void seg_sieve(long long u, long long v)
+{
+
+    for(int64_t i=0; prime[i]*prime[i]<=sqrt(N); i++)
+    {
+        int64_t base=(u/prime[i])*prime[i];
+       // cout<<"B "<<base<<"   "<<prime[i]<<endl;
+        if(base<u) base+=prime[i];
+     //   cout<<"B!  "<<base<<"      "<<endl;
+        for(int64_t j=base; j<=v; j+=prime[i])
+        {
+            sign[j-u]=false;
+        }
+        if(base==prime[i])sign[base-u]=true;
+    }
+    for(int64_t i=u; i<=v; i++)
+    {
+       // cout<<"U   "<<i-u<<endl;
+        if(sign[i-u])
+        {
+            seg[k++]=i;
+        }
+    }
+}
+int main()
+{
+    long long u,v;
+    memset(sign,true,sizeof sign);
+    sieve();
+
+    while( scanf("%lld%lld",&u,&v) != EOF)
+    {
+         memset(sign,true,sizeof sign);
+         seg_sieve(u,v);
+         for(int i=0 ;i<k; i++)printf("%lld\n",seg[i]);
+    }
+
+
+    return 0;
+}

@@ -1,0 +1,7 @@
+//const int INF = 0x3f3f3f3f;
+//const long long int LL_INF = 0x3f3f3f3f3f3f3f3f;
+// int normal_min = ((-2) * (1000000000));
+// int normal_max = (2 * 1000000000);
+// long long int high_min = ((-9) * (1000000000000000000));
+// long long int high_max = (9 * 1000000000000000000);
+// max double = 1.79769e+308;

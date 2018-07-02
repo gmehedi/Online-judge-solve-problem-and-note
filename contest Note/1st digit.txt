@@ -1,0 +1,1 @@
+ printf("%d...%03d\n", (int)(pow(10, fmod(k*log10(n), 1))*100), trail);

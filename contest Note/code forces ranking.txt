@@ -1,0 +1,1 @@
+http://cf-predictor-frontend.herokuapp.com/

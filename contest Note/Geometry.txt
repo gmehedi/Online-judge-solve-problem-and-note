@@ -1,0 +1,5 @@
+ Distance of two points = sqrt( (x1-x2)^2+(y1-y2)^2 )
+distance from (0,0) to any point = sqrt(x^2+y^2)
+
+x,y width given..
+intersect point=sqrt(x*x-w*w)*sqrt(y*y-w*w)/sqrt(x*x-w*w)+sqrt(y*y-w*w)

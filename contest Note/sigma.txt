@@ -1,0 +1,3 @@
+Sigma Function of n is odd if and only if n is square or twice square
+
+sigma= (p1^k+1 -1)/p1-1 * (p2^k+1 - 1)/p2..........

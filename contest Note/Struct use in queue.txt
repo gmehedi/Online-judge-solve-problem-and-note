@@ -1,0 +1,6 @@
+struct str
+{ int a,b,c};
+
+q<str>q;
+q.push( {1,2,3});
+cout<<q.front().a<<endl;

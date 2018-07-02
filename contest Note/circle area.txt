@@ -1,0 +1,3 @@
+p (Pi) times the Radius squared:	A = p r2
+or, when you know the Diameter:	A = (p/4) × D2
+or, when you know the Circumference:	A = C2 / 4p

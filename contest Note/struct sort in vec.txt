@@ -1,0 +1,11 @@
+
+struct subject
+{
+    long long d;
+    long long  a;
+    long long b;
+};
+bool compare(subject x,subject y) { return x.d < y.d; }
+
+
+sort(v.begin(),v.endf(),compare);
