@@ -11,7 +11,7 @@ struct str
 };
 vector<str>v;
 map<string,int>mp;
-set<int>seet;
+
 bool compare(str x, str y)
 {
     return x.c<y.c;
@@ -37,7 +37,6 @@ int find_root(int i)
 
 int transfer_and_size(int ra, int rb, int a, int b)
 {
-    seet.insert(a), seet.insert(b);
     if(sz[ra]>=sz[rb])
     {
         sz[ra]+=sz[rb];
@@ -52,6 +51,16 @@ int transfer_and_size(int ra, int rb, int a, int b)
 
 void initialize() { for(int i=1; i<=cnt; i++) sz[i]=1,group[i]=i; }
 
+bool check()
+{
+    int temp=find_root(1);
+    for(int i=2; i<=cnt; i++)
+    {
+        if(find_root(i) != temp) return false;
+    }
+    return true;
+}
+
 void mimnimum_spanning_tree()
 {
     initialize();
@@ -63,7 +72,7 @@ void mimnimum_spanning_tree()
         if(ra==rb) continue;
         else total+=w, transfer_and_size(ra,rb,x,y);
     }
-    if( (int)seet.size()==cnt)
+    if( check() )
     {
         printf("Case %d: %lld\n",cas++,total);
     }
@@ -91,10 +100,8 @@ int main()
         //clear memory.
         vector<str>v1;
         map<string,int>mp1;
-        set<int>seet1;
         swap(v1,v);
         swap(mp1,mp);
-        swap(seet1,seet1);
     }
     return 0;
 }
