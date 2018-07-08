@@ -1,0 +1,7 @@
+1st sort tha edge weight basis..
+
+2nd take an edge and check 2 nodes of this adge are same set or not. 
+If they are in same union ignore it other wise take this adge and add it's in Mst;
+
+res: if all node are include in set of Mst graph then we can see that our MST is builting.
+Otherwise Impossible
