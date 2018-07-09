@@ -56,6 +56,7 @@ void initialize(int n)
 
 void minimum_spannig_tree(int ra, int rb)
 {
+   // cout<<"R  "<<ra<<"   "<<rb<<endl;
     group[ra]=group[rb];
 }
 
@@ -68,11 +69,11 @@ void graph_build(int x, int y, int w)
     cost[y][x]=w;
 }
 
-bool check(int n)
+bool check(int n,int t)
 {
-    int t=find_root(0);
-    for(int i=1; i<n; i++) if(group[i] != t) return false;
-    return true;
+    int t1=find_root(t),n1=find_root(n);
+    if(t1!=n1) return false;
+    else return true;
 }
 int main()
 {
@@ -105,12 +106,11 @@ int main()
         printf("Case %d:\n",cas++);
         for(int i=0; i<n; i++)
         {
+            if(!check(i,t)){ printf("Impossible\n"); continue; }
             maxi=0,flag=0;
             memset(sign,true,sizeof sign);
-        //    cout<<endl<<"I   "<<i<<endl;
             bfs(i,destination);
-            if(flag==1 ) printf("%d\n",maxi);
-            else printf("Impossible\n");
+            printf("%d\n",maxi);
         }
         v.clear();
         for(int i=0; i<n; i++) graph[i].clear();
