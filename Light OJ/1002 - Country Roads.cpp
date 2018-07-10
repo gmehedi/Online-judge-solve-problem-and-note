@@ -1,10 +1,10 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 vector<int>graph[510];
 int cost[510][510];
 int group[510];
-int maxi=0,cas=1;
+int cas=1;
+int res[510];
 struct str
 {
     int x;
@@ -19,12 +19,12 @@ bool compare(str a, str b)
 bool sign[510];
 int flag=0;
 
-int bfs(int u, int d)
+int bfs(int u)
 {
-    if(u==d){ flag=1; return 0; }
     queue<int>q;
     q.push(u);
     sign[u]=false;
+    res[u]=0;
     while(!q.empty())
     {
         int f=q.front();
@@ -32,13 +32,14 @@ int bfs(int u, int d)
         for(int i=0; i<(int)graph[f].size(); i++)
         {
             int v=graph[f][i];
-          //  cout<<"F  "<<f<<"   "<<v<<  "   "<<cost[f][v]<<endl;
-            if(sign[v] && !flag)
+            int c=cost[f][v];
+         //   cout<<"F  "<<f<<"   "<<v<<  "   "<<cost[f][v]<<endl;
+            if(sign[v])
             {
-                maxi=max(maxi,cost[f][v]);
-                if(v==d) { flag=1; return 0; }
                 sign[v]=false;
                 q.push(v);
+             //   cout<<"W                                   "<<res[v]<<"   "<<cost[u][v]<<endl;
+                res[v]=max(res[f],cost[f][v]);
             }
         }
     }
@@ -56,7 +57,6 @@ void initialize(int n)
 
 void minimum_spannig_tree(int ra, int rb)
 {
-   // cout<<"R  "<<ra<<"   "<<rb<<endl;
     group[ra]=group[rb];
 }
 
@@ -69,12 +69,6 @@ void graph_build(int x, int y, int w)
     cost[y][x]=w;
 }
 
-bool check(int n,int t)
-{
-    int t1=find_root(t),n1=find_root(n);
-    if(t1!=n1) return false;
-    else return true;
-}
 int main()
 {
     int t;
@@ -104,17 +98,17 @@ int main()
             else { minimum_spannig_tree(ra,rb); graph_build(t1,t2,w); }
         }
         printf("Case %d:\n",cas++);
-        for(int i=0; i<n; i++)
-        {
-            if(!check(i,t)){ printf("Impossible\n"); continue; }
-            maxi=0,flag=0;
-            memset(sign,true,sizeof sign);
-            bfs(i,destination);
-            printf("%d\n",maxi);
-        }
+        memset(sign,true,sizeof sign);
         v.clear();
+        for(int i=0; i<=n; i++)res[i]=-1;
+        bfs(destination);
+       for(int i=0; i<n; i++)
+       {
+           if(res[i]==-1) printf("Impossible\n");
+           else printf("%d\n",res[i]);
+       }
         for(int i=0; i<n; i++) graph[i].clear();
-
+        memset(cost,0,sizeof cost);
     }
     return 0;
 }
