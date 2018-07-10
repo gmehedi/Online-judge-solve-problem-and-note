@@ -98,15 +98,18 @@ int main()
             else { minimum_spannig_tree(ra,rb); graph_build(t1,t2,w); }
         }
         printf("Case %d:\n",cas++);
-        memset(sign,true,sizeof sign);
-        v.clear();
+        
         for(int i=0; i<=n; i++)res[i]=-1;
+        
         bfs(destination);
+        
        for(int i=0; i<n; i++)
        {
            if(res[i]==-1) printf("Impossible\n");
            else printf("%d\n",res[i]);
        }
+       memset(sign,true,sizeof sign);
+       v.clear();
         for(int i=0; i<n; i++) graph[i].clear();
         memset(cost,0,sizeof cost);
     }
