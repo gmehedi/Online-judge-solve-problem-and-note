@@ -99,14 +99,14 @@ int main()
         }
         printf("Case %d:\n",cas++);
 
-        for(int i=0; i<=n; i++)res[i]=-1;
+        for(int i=0; i<=n; i++)res[i]=INT_MAX;
         memset(sign,true,sizeof sign);
 
         bfs(destination);
 
        for(int i=0; i<n; i++)
        {
-           if(res[i]==-1) printf("Impossible\n");
+           if(res[i]==INT_MAX) printf("Impossible\n");
            else printf("%d\n",res[i]);
        }
 
