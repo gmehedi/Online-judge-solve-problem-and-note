@@ -10,13 +10,12 @@ int bfs(int u)
 {
     sign[u]=false;
     res[u]=0;
-    queue<pair<int,int> >q;
-    q.push( make_pair(u,0) );
+    queue<int>q;
+    q.push(u);
 
     while( ! q.empty() )
     {
-        int f=q.front().first;
-        int cost=q.front().second;
+        int f=q.front();
         q.pop();
         for(int i=0; i<(int)graph[f].size(); i++)
         {
@@ -25,16 +24,8 @@ int bfs(int u)
 
             if(sign[v])
             {
-                 if(res[f]>ww)
-                {
-                    res[v]=res[f];
-                    q.push(make_pair(v,res[v]));
-                }
-                else
-                {
-                    res[v]=ww;
-                    q.push(make_pair(v,res[v]));
-                }
+                res[v]=max(res[f],ww);
+                q.push(v);
                 sign[v]=false;
             }
 
