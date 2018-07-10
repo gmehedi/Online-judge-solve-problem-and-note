@@ -111,7 +111,7 @@ int main()
        memset(sign,true,sizeof sign);
        v.clear();
         for(int i=0; i<n; i++) graph[i].clear();
-        memset(cost,0,sizeof cost);
+        memset(cost,-1,sizeof cost);
     }
     return 0;
 }
