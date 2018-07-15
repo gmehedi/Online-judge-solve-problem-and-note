@@ -74,7 +74,7 @@ int main()
             if(unioon(x,y)) samet+=w;
         }
 
-       state=0;
+        state=0;
         for(int i=0; i<(int)diff.size(); i++)
         {
             int x=diff[i].second.first, y=diff[i].second.second;
@@ -82,6 +82,7 @@ int main()
             if(unioon(x,y)) difft+=w,state++;// cout<<"X  "<<x<<"  "<<y<<"  "<<w<<endl;
         }
         printf("Case #%d: %d %.0f %.0f\n",cas++,state+1,samet,difft);
+        
         same.clear();
         diff.clear();
 
