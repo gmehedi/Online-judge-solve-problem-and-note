@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t,cas=1;
+    cin>>t;
+    while(t--)
+    {
+        string s,th,man;
+        int n;
+        cin>>n;
+        long long sum=0,maxi=0,mini=123456789;
+        getchar();
+        for(int i=0; i<n; i++)
+        {
+            int h,w,l;
+            cin>>s>>h>>l>>w;
+            long long temp=(h*l*w);
+            if(maxi<temp)
+            {
+                maxi=temp;
+                th=s;
+
+            }
+            if(mini>temp)
+            {
+                mini=temp;
+                man=s;
+            }
+        }
+
+        if(maxi != mini) cout<<"Case "<<cas++<<": "<<th<<" took chocolate from "<<man<<endl;
+        else printf("Case %d: no thief\n",cas++);
+    }
+    return 0;
+}
