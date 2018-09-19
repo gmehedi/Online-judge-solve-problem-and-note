@@ -1,0 +1,68 @@
+
+import java.math.BigInteger;
+import java.util.Scanner;
+import javax.swing.JFrame;
+//import java.util.*;
+
+public class MMM {
+    
+    static BigInteger dp[][]=new BigInteger [1110][60];
+    
+   
+    public static void main(String[] args) {
+        
+        Scanner input = new Scanner(System.in);
+        
+        int n= input.nextInt();
+        int s= input.nextInt(); 
+        
+        if(s%2==1){ System.out.println("0"); }
+        else
+        {
+            Init();
+            BigInteger res =Dp(s/2,n);
+            
+            System.out.println(res.multiply(res));
+        }
+    }
+        
+        
+        
+    public static void Init()
+    {
+        for(int i=0; i<=1010; i++)
+        {
+            for(int j=0; j<=53; j++)
+            {
+               dp[i][j]=  BigInteger.valueOf(-1);
+            }
+        }
+    }
+    
+     
+    public static BigInteger Dp (int s, int n)
+    {
+       
+       if(s<0) return BigInteger.ZERO;
+       
+        if(n == 0)
+        {
+            if(s == 0) return BigInteger.ONE;
+            return BigInteger.ZERO;
+        }
+        
+         if ( dp [s] [n].compareTo(BigInteger.valueOf(-1)) != 0 ) return dp [s] [n];
+        BigInteger ans =BigInteger.ZERO;
+        
+        for(int i=0; i<10; i++)
+        {
+           ans = ans.add( Dp(s-i,n-1) );
+        } 
+     //  System.out.println(n +"  " + s);
+       return dp[s][n]=ans;
+    }
+    
+    
+    
+    
+}
