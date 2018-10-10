@@ -11,7 +11,7 @@ long long Bionomial(int n, int k)
     for(int i=1; i<=k; i++)
     {
         res= res*(n-k+i);
-        res=res/i;
+        res=res/i;d
     }
    return res;
 }
