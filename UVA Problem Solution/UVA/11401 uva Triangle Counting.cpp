@@ -82,7 +82,7 @@ int main()
     Dp();
     while( scanf("%d",&n) && n>=3)
     {
-        printf("%lld\n",dp[n]);
+        printf("%llu\n",dp[n]);
     }
 
     return 0;
