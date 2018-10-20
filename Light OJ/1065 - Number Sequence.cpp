@@ -1,52 +1,35 @@
 
 #include<bits/stdc++.h>
+#define maxl 2
 #define ll long long
-#define ull unsigned long long
-
 using namespace std;
-ll mod = 0,maxl=0,val[20],fuc[20];
 
-struct Matrix
+ll mod=0;
+struct matrix
 {
-    ll a[20][20];
-
-    Matrix()
+    ll a[maxl][maxl];
+    matrix()
     {
         memset(a,0,sizeof a);
     }
-
     void init()
     {
-        for(int i=0; i<maxl; i++)
-        {
-            for(int j=0; j<maxl; j++)
-            {
-                if(i == 0) { a[i][j]=val[maxl-j-1]; continue; }
-                if(j == (i-1)) { a[i][j]=1; break;  }
-            }
-        }
-        cout<<"TT "<<endl;
-        for(int i=0; i<maxl; i++)
-        {
-            for(int j=0; j<maxl; j++)
-            {
-                cout<<a[i][j]<<"  ";
-            }
-            printf("\n");
-        }
-        cout<<"EE"<<endl;
+        a[0][0]=1, a[0][1]=1;
+        a[1][0]=1, a[1][1]=0;
+       // cout<<"F "<<a[0][0]<<"  "<<a[0][1]<<endl;
     }
-    Matrix operator* ( Matrix temp )
+
+    matrix operator* ( matrix temp )
     {
-        Matrix res;
+        matrix res;
         for(int i=0; i<maxl; i++)
         {
             for(int j=0; j<maxl; j++)
             {
                 res.a[i][j]=0;
                 for(int k=0; k<maxl; k++)
-                {
-                    res.a[i][j] = ( res.a[i][j]+(temp.a[i][k]*a[k][j])%mod ) %mod;
+                {//cout<<"Ttt  "<<temp.a[i][k]<<"  "<<a[k][j]<<endl;
+                    res.a[i][j] =( res.a[i][j]+ (temp.a[i][k]*a[k][j]) )%mod;
                 }
             }
         }
@@ -55,46 +38,46 @@ struct Matrix
 
 };
 
-Matrix Power(Matrix temp, ll n)
+matrix Power(matrix mat, ll n)
 {
-    if(n == 1) return temp;
+    if(n == 1) return mat;
 
-    Matrix res=Power(temp,n/2);
-    res = (res*res);
-//cout<<"R  "<<res.a[0][0]<<endl;
-    if(n%2 == 1) res = (res*temp);
+    matrix res = Power(mat,n/2);
+    res = res*res;
+    if( (n%2) == 1 ) res= res*mat;
 
     return res;
 }
 
-Matrix MatrixExpo(Matrix temp, ll n)
+matrix Matrix_Expo(matrix mat, ll n)
 {
-    Matrix res= Power(temp,n);
-    return  res;
+    matrix res = Power(mat,n);
+    return res;
 }
 
 int main()
 {
-    ll n,m,d;
+    ll n,t;
+    int cas=1;
+    struct matrix mat;
 
-
-    while( scanf("%lld %lld %lld",&d,&n,&m) != EOF )
+    scanf("%lld",&t);
+    mat.init();
+    while(  t-- )
     {
-        struct Matrix temp;
-        maxl=d, mod=m;
+        ll x,y,n,m;
+        scanf("%lld %lld %lld %lld",&x,&y,&n,&m);
+        mod=powl(10,m);
 
-        for(int i=0; i<d; i++) scanf("%lld",&val[i]);
-        for(int i=0; i<d; i++) scanf("%lld",&fuc[i]);
-
-        temp.init();
-        if(n <= d)
+        if(n<=1)
         {
-            printf("A   %lld\n",val[n-1]%mod);
+            if(n == 0) printf("Case %d: %lld\n",cas++,x%mod);
+            else printf("Case %d: %lld\n",cas++,y%mod);
             continue;
         }
-        Matrix res=MatrixExpo(temp,n-1);
-        ll ans= res.a[0][0];
-        printf("A   %lld\n",ans);
+
+        matrix res = Power(mat,n-1);
+        printf("Case %d: %lld\n",cas++, ( (res.a[0][0]*y) %mod + (res.a[0][1]*x) %mod) %mod );
     }
     return 0;
 }
