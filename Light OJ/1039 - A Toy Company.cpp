@@ -15,7 +15,6 @@ bool Check2(string toy, string ch[4])
             if(toy[i] == ch[i][j]) { sign=true; break; }
         }
         if( !sign ) return true;
-
     }
     return false;
 }
@@ -81,7 +80,6 @@ ll bfs(string start, string dest, string con[102][4])
               //  cout<<"T2  "<<temp2<<endl;
                 mp[temp2]=1;
             }
-
         }
     }
 
@@ -110,10 +108,8 @@ int main()
 
         if( start == last) printf("Case %d: 0\n",cas++);
         else if( !Check(start,con) || !Check(last,con) ) printf("Case %d: -1\n",cas++);
-        else
-        {
-            printf("Case %d: %lld\n",cas++,bfs(start,last,con) );
-        }
+        else printf("Case %d: %lld\n",cas++,bfs(start,last,con) );
+        
     }
 
     return 0;
