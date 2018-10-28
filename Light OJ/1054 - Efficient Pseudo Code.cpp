@@ -73,8 +73,7 @@ int main()
     {
         ll n,m;
         scanf("%lld %lld",&n,&m);
-         printf("Case %d: %lld\n",cas++,Factorization(n,m) );
+        printf("Case %d: %lld\n",cas++,Factorization(n,m) );
     }
-
     return 0;
 }
