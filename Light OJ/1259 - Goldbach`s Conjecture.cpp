@@ -16,8 +16,6 @@ void Prime()
     for(int i=2; i<=maxi; i++)if(!b[i] ) prime.push_back(i),k++;
 }
 
-
-
 int main()
 {
     int t,cas=1;
