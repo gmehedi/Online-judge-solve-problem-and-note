@@ -77,14 +77,11 @@ bool Possible(ll mid)
         sum+=a[i];
         if(sum>mid)
         {
-            cnt++, sum=0;
-            i--;
+            cnt++, sum=0, i--;
         }
     }
-
     if(sum != 0) cnt++;
     if(cnt<=k) return true;
-
     return false;
 }
 
@@ -92,28 +89,23 @@ int main()
 {
     int t,cas=1;
     scanf("%d",&t);
-
     while(t--)
     {
-
         scanf("%d %d",&n,&k);
         ll l=0,r=0,ans=0,k1=0;
 
         for(int i=0; i<n; i++)
         {
-            scanf("%d",&a[i]);
-            r+=a[i];
+            scanf("%d",&a[i]), r+=a[i];
         }
         r=r+r;
         while(l<=r)
         {
             ll mid=(l+r)/2;
-           //cout<<"M  "<<mid<<endl;
             if( Possible(mid) )
             {
                 r=mid-1;
                 ans=mid;
-              // cout<<"A  "<<ans<<endl;
             }
             else l=mid+1;
         }
