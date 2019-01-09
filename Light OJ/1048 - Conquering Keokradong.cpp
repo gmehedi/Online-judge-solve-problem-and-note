@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 #include <bits/stdc++.h>
 #define pii              pair <int,int>
@@ -76,34 +75,20 @@ bool Possible(ll mid)
     for(int i=0; i<=n; i++)
     {
         if(mid<a[i]) return false;
-        if(sum+a[i]>mid)
+        sum+=a[i];
+        if(sum>mid)
         {
             cnt++, sum=0;
+            i--;
         }
-        sum =+ a[i];
-        //cout<<a[i]<<" ";
     }
-  //  cout<<endl;
-   // cout<<"M  "<<mid<<  "  "<<cnt<<"  "<<k<<endl;
-    if(cnt<=k) return true;
+
+    if(sum != 0) cnt++;
+    if(cnt<=k+1) return true;
 
     return false;
 }
 
-bool Possible1(ll avrg)
-{
-       ll sum=0,tot=0;
-        for(int i=0; i<=n; i++)
-        {
-            if(sum+a[i] > avrg && sum != 0) sum=0, tot++;
-            sum += a[i];
-            if(tot == k+1) break;
-        }
-        if(sum != 0 ) tot++;
-        if(tot >= k+1) return true;
-        return false;
-        //cout<<"A "<<ans<<endl;
-}
 int main()
 {
     int t,cas=1;
@@ -118,46 +103,44 @@ int main()
         for(int i=0; i<=n; i++)
         {
             scanf("%d",&a[i]);
-            r += a[i];
+            r+=a[i];
         }
-        k1=r;
-//cout<<"R  "<<r<<endl;
+        r=r+r;
         while(l<=r)
         {
             ll mid=(l+r)/2;
+           //cout<<"M  "<<mid<<endl;
             if( Possible(mid) )
             {
                 r=mid-1;
                 ans=mid;
+              // cout<<"A  "<<ans<<endl;
             }
             else l=mid+1;
         }
-        printf("Case %d: %d\n",cas++,ans);
-        l=0,r=k1;
+        printf("Case %d: %lld\n",cas++,ans);
+        vector<ll> res;
 
-        while(l<=r)
+        ll sum=0,tot=0,num=0,i=0;
+        for(i=0; i<=n; i++)
         {
-            ll mid=(l+r)/2;
-            if(Possible1(mid)) l=mid+1, ans=mid;
-            else r=mid-1;
-        }
+            sum+=a[i];
+            num++;
+            if(sum >= ans)
+            {
+                if(sum != ans) sum-=a[i],i--,num--;
+                res.pb(sum),sum=0;
+            }
+           // cout<<"I  "<<i<<"  "<<n-num<<"  "<<res.size()<<"  "<<k<<endl;
+            if((n-num+1)+res.size() == k) break;
 
-    //    cout<<"AA  "<<ans<<endl;
-        ll avrg=ans,sum=0;
-        vector<ll>res;
-        int i;
-        for( i=n; i>=0; i--)
-        {
-            if(sum+a[i] > ans && sum != 0) res.pb(sum), sum=0;
-            sum += a[i];
-            if(res.size() == k) break;
         }
-        i--;
-        while(i>=0) sum+=a[i], i--;
-        if(sum != 0 ) res.pb(sum);
+        i++;
+        if(sum != 0) res.pb(sum);
+        while(i<=n) res.pb(a[i]),i++;
+       //cout<<"SZ   "<<res.size()<<"  "<<k+1<<endl;
+        for(int i=0; i<res.size(); i++) printf("%lld\n",res[i]);
 
-        for(int i=res.size()-1; i>=0; i--) printf("%lld\n",res[i]);
-        //cout<<"A "<<ans<<endl;
     }
     return 0;
 }
