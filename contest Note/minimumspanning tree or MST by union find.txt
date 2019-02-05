@@ -49,12 +49,12 @@ int transfer_and_size(int ra, int rb, int a, int b)
     if(sz[ra]>=sz[rb])
     {
         sz[ra]+=sz[rb];
-        group[ra]=group[rb];
+        group[rb]=group[ra];
     }
     else
     {
         sz[rb]+=sz[ra];
-        group[rb]=group[ra];
+        group[ra]=group[rb];
     }
 }
 
