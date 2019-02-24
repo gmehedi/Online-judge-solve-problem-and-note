@@ -1,0 +1,143 @@
+#include <bits/stdc++.h>
+#define pii              pair <int,int>
+#define pll              pair <long long,long long>
+#define sc               scanf
+#define pf               printf
+#define Pi               2*acos(0.0)
+#define ms(a,b)          memset(a, b, sizeof(a))
+#define pb(a)            push_back(a)
+#define MP               make_pair
+#define db               double
+#define ll               long long
+#define ull              unsigned long long
+#define f                first
+#define s                second
+#define sqr(x)           (x)*(x)
+#define VI               vector <int>
+#define DBG              pf("Hi\n")
+#define MOD              1000000007
+#define SZ(a)            (int)a.size()
+#define sf(a)            scanf("%d",&a)
+#define sfl(a)           scanf("%lld",&a)
+#define sff(a,b)         scanf("%d %d",&a,&b)
+#define sffl(a,b)        scanf("%lld %lld",&a,&b)
+#define sfff(a,b,c)      scanf("%d %d %d",&a,&b,&c)
+#define sfffl(a,b,c)     scanf("%lld %lld %lld",&a,&b,&c)
+#define loop(i,n)        for(int i=0;i<n;i++)
+#define loop1(i,n)       for(int i=1;i<=n;i++)
+#define REP(i,a,b)       for(int i=a;i<b;i++)
+#define RREP(i,a,b)      for(int i=a;i>=b;i--)
+#define intlim           2147483648
+#define ull              unsigned long long
+#define gcd(a, b)        __gcd(a, b)
+#define lcm(a, b)        ((a)*((b)/gcd(a,b)))
+#define mk(x1,y1) make_pair(x1, y1)
+#define maxl 100001
+#define psz 20
+using namespace std;
+int n,q,a[maxl+2],curl=0,curr=0,cnt[maxl+2];
+
+const int block=sqrt(maxl+1);
+
+struct  str
+{
+    int left;
+    int right;
+    int pos;
+};
+bool compare(str x, str y)
+{
+    if(x.left/block == y.left/block)
+    {
+        return (x.right/block) < (y.right/block);
+    }
+    return  (x.left/block)<(y.left/block);
+}
+vector<pii>res;
+vector<str>v;
+
+void Mos()
+{
+    curl=0,curr=-1;
+
+    int ans=0;
+    for(int i=0; i<v.size(); i++)
+    {
+        int l=v[i].left;
+        int r=v[i].right;
+
+        while(curl < l)
+        {
+            cnt[a[curl]]--;
+            if(cnt[a[curl]] == 0) ans--;
+            curl++;
+            //cout<<"G  "<<curl<<"  "<<cnt[a[curl]]<<endl;
+        }
+        while(curl > l)
+        {
+            curl--;
+             cnt[a[curl]]++;
+            if(cnt[a[curl]] == 1) ans++;
+               //cout<<"G1  "<<curl<<"  "<<cnt[a[curl]]<<endl;
+
+        }
+
+        while(curr < r)
+        {
+            curr++;
+            cnt[a[curr]]++;
+            if(cnt[a[curr]] == 1) ans++;
+            //cout<<"F  "<<curr<<"  "<<cnt[a[curr]]<<endl;
+        }
+
+        while(curr > r)
+        {
+            cnt[a[curr]]--;
+            if(cnt[a[curr]] == 0) ans--;
+            curr--;
+               //cout<<"F1  "<<curr<<"  "<<cnt[a[curr]]<<endl;
+        }
+        res.push_back(mk(v[i].pos,ans));
+
+    }
+}
+void init()
+{
+    memset(cnt,0,sizeof cnt);
+    v.clear();
+    res.clear();
+}
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    int t,cas=1;
+    scanf("%d",&t);
+    while(t--)
+    {
+        init();
+
+        scanf("%d %d",&n,&q);
+        for(int i=0; i<n; i++) scanf("%d",&a[i]);
+        int j=0;
+        while(q--)
+        {
+            int l1,r1;
+
+            scanf("%d%d",&l1,&r1);
+            v.push_back({l1-1,r1-1,j++});
+           // cout<<"L  "<<l1<<" "<<r1<<endl;
+        }
+        sort(v.begin(),v.end(),compare);
+        Mos();
+        sort(res.begin(),res.end());
+        printf("Case %d:\n",cas++);
+        for(int i=0; i<res.size(); i++)
+        {
+            printf("%d\n",res[i].s);
+        }
+
+    }
+
+    return 0;
+}
+
