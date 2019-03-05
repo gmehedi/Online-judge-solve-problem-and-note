@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+#define MOD 1000000007
+#define ll long long
+#define maxl 2000001
+using namespace std;
+ll fac[maxl+3];
+//inv[maxl+3];
+
+ll Big(ll b, ll p)
+{
+    if(p == 0LL) return 1LL;
+    ll x=Big(b,p/2LL);
+    x=(x*x)%MOD;
+    if(p%2LL) x=(x*b)%MOD;
+    return x%MOD;
+}
+ 
+ll Inv(ll b, ll p)
+{
+    return Big(b,p-2LL);
+}
+ 
+void Fac()
+{
+    fac[0]=1LL;
+    for(ll i=1LL; i<=maxl; i++)
+    {
+        fac[i]=(fac[i-1]*i)%MOD;
+    }
+}
+ 
+int main()
+{
+    int t,cas=1;
+    Fac();
+ 
+    scanf("%d",&t);
+    while(t--)
+    {
+        ll n,k;
+        scanf("%lld %lld",&n,&k);
+        ll r=n+(k-1LL);
+        ll c=k-1LL;
+
+        ll ans=(((fac[r]*Inv(fac[c],MOD))%MOD)*Inv(fac[r-c],MOD))%MOD;
+
+        printf("Case %d: %lld\n",cas++,ans%MOD);
+     
+    }
+    return 0;
+ 
+}
