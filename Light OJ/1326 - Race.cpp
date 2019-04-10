@@ -56,7 +56,6 @@ void Pascal()
     }
 
    // for(int i=0; i<12; i++) { for(int j=0; j<12; j++) cout<<pascal[i][j]<<"   "; cout<<endl; }
-
 }
 ll dp[maxl+2];
 
@@ -80,11 +79,8 @@ int main()
     while(t--)
     {
         int n;
-
         scanf("%d",&n);
         printf("Case %d: %lld\n",cas++,Solve(n));
-
     }
-
     return 0;
 }
