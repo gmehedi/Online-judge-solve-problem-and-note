@@ -1,0 +1,50 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+double a[1000002];
+int n,m;
+bool possible(double mid)
+{
+    int cnt=1;
+    double pos=a[0]+mid;
+    for(int i=1; i<m; i++)
+    {
+        if(abs(pos-a[i])<=mid )continue;
+        pos=a[i]+mid;
+        cnt++;
+    }
+//cout<<"C   "<<cnt<<"  "<<mid<<endl;
+    if(cnt<=n) return true;
+    else return false;
+}
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%d %d",&n,&m);
+
+        for(int i=0; i<m; i++)
+        {
+            scanf("%lf",&a[i]);
+        }
+        sort(a,a+m);
+        double mid,ans=0;
+        double left=0, right=a[m-1];
+        while(abs(left-right)>0.001)
+        {
+            mid=(left+right)/2.0;
+            if( possible(mid) )
+            {
+                right=mid;
+                ans=mid;
+            }
+            else  left=mid;
+           // cout<<"L             "<<left<<"   "<<right<<endl;
+        }
+        printf("%.1f\n",ans);
+    }
+
+
+}
