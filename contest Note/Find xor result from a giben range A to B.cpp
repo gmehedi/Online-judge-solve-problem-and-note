@@ -61,6 +61,21 @@ const int fy[]={+0,+0,+1,-1};
 //freopen("out.txt","w",stdout);
 //ios_base::sync_with_stdio(false);
  //cin.tie(NULL);
+//////////////////////////////// Smart Soluion \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+long long f(long long a) {
+    
+     long long res[] = {a,1,a+1,0};
+     return res[a%4];
+}
+
+long long solution(long long a, long long b) {
+     return f(b)^f(a-1);
+}
+
+
+
+///////////////////////////////////////////////////////// O(N) solution \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 int MID (int M, int N) {
 
