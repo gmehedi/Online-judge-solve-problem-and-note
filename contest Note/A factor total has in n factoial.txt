@@ -1,0 +1,14 @@
+ull TT(ull temp, ull n){
+
+    ull tt = temp;
+    ull ans = 0;
+
+    while(n >= tt ){
+
+        ans += (n / tt);
+        if( n / tt < temp) break;
+        tt = (tt * temp);
+
+    }
+    return ans;
+}
