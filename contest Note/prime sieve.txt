@@ -1,11 +1,16 @@
-bitset<maxi>b;
-int prime[maxi];
-int k=0;
+bool b[maxl + 2];
+vector<ll>prime[maxl + 2];
+
 void Prime()
 {
-    b[0]=true;
-    for(int i=2; i*i<=maxi; i++) if(!b[i]) for(int j=i*i; j<=maxi; j=j+i )b[j]=true;
-    k=0;
-    for(int i=2; i<=maxi; i++)if(!b[i] ) prime[k++]=i;
+    memset(sign, true, sizeof sign);
+    prime.pb(2);
+    for(ll i = 3; i * i <= maxl; i += 2){
+        if(sign[i]){
+            for(ll j = i * i; j <= maxl; j += (i * 2LL)) sign[j] = false;
+        }
+    }
+    for(ll i = 3; i <= maxl; i += 2LL){
+        if(sign[i]) prime.pb(i);
+    }
 }
-
